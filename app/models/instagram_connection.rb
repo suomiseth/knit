@@ -9,6 +9,7 @@ class InstagramConnection
   end
 
   def media_feed
+    
     @client.user_media_feed
   end  
 
