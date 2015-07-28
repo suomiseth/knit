@@ -47,5 +47,6 @@ group :development, :test do
   gem 'omniauth-facebook'
   gem 'omniauth-twitter'
   gem 'omniauth-instagram'
+  gem 'twitter'
 end
 
