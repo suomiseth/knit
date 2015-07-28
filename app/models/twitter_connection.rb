@@ -14,5 +14,12 @@ class TwitterConnection
     end
   end
   
+  def get_tweets
+    tweets = client.user_timeline("mitchellhart")
+    tweets.each do |tweet|
+      tweet.text
+    end
+  end
+
 end
 
