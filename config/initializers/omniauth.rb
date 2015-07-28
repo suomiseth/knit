@@ -4,7 +4,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
- provider :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET'], ENV['TWITTER_ACCESS_TOKEN'], ENV['TWITTER_ACCESS_TOKEN_SECRET']
+ provider :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET']
 end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
