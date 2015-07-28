@@ -12,7 +12,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @instagram = InstagramConnection.new(@user.auth_token)
     @posts = @instagram.select_post 
+    @tweets = TwitterConnection.new(current_user).get_tweets
+
   end
 
+  def settings
+  end
   
 end

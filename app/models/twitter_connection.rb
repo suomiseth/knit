@@ -1,7 +1,8 @@
 class TwitterConnection 
   attr_reader :client
 
-  def initialize
+  def initialize(current_user)
+    @current_user = current_user
     @client = create_client
   end
 
@@ -14,5 +15,14 @@ class TwitterConnection
     end
   end
   
+  def get_tweets
+    
+    client.user_timeline(@current_user.uid.to_i, count: 10)
+  end
+
+
+
+
+
 end
 

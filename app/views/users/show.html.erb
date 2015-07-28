@@ -1,4 +1,10 @@
+
+<h2>Latest grams: </h2>
 <% @posts.each do |post| %>
 <p><img src="<%=post%>" alt=""></p>
 <%end%>
 
+<h2>Latest tweets: </h2>
+<% @tweets.each do |tweet| %>
+<p><%= image_tag "twitter.png", size: "20" %><%= tweet.text %> <b>timestamp :</b> <%= tweet.created_at %> </p>
+<% end  %>
