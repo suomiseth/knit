@@ -4,5 +4,15 @@ class UsersController < ApplicationController
     # @instagram = Instagram.user_recent_media("49493754", {:count => 1})
   end
 
+  def create
+    
+  end
+
+  def show
+    @user = User.find(params[:id])
+    @instagram = InstagramConnection.new(@user.auth_token)
+    @posts = @instagram.select_post 
+  end
+
   
 end

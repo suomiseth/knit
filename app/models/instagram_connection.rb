@@ -6,9 +6,20 @@ class InstagramConnection
     # GETTING THE INSTAGRAM AUTH TOKEN
     @client = Instagram.client(:access_token => token)
 
-
   end
 
+  def media_feed
+    @client.user_media_feed
+  end  
+
+  def select_post
+    ten = media_feed[0..10]
+    return ten_images(ten)
+  end  
+
+  def ten_images(ten)
+   ten.map{|x| x[:images][:low_resolution][:url]}
+  end
   # get the token
   # auth_hash["credentials"]["token"]
 
@@ -22,5 +33,5 @@ class InstagramConnection
   # # @client.user_follows
   # @media_feed = @client.user_media_feed
   # # array
-
+  # ten[9][:images][:low_resolution][:url]
 end
