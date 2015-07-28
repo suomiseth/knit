@@ -11,3 +11,11 @@
 <p><%= image_tag "twitter.png", size: "20" %><%= tweet.text %> <b>timestamp :</b> <%= tweet.created_at %> </p>
 <% end  %>
 <% end %>
+
+<% if @facebook_posts %>
+  <h2>Latest Facebook Posts</h2>
+  <% @facebook_posts.each do |post| %>
+  <p><a href=<%= post %> %><%= post %></a></p>
+  <% end %>
+<% end %>
+
