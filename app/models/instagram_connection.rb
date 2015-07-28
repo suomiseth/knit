@@ -4,7 +4,7 @@ class InstagramConnection
   def initialize(token)
 
     # GETTING THE INSTAGRAM AUTH TOKEN
-    @client = Instagram.client(token)
+    @client = Instagram.client(:access_token => token)
 
 
   end
