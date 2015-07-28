@@ -49,14 +49,23 @@ ActiveRecord::Schema.define(version: 20150727151534) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "uid"
-    t.string   "provider"
+    t.string   "user_name"
+    t.string   "facebook_name"
+    t.string   "facebook_uid"
+    t.string   "facebook_provider"
+    t.string   "facebook_auth_token"
+    t.string   "twitter_name"
+    t.string   "twitter_uid"
+    t.string   "twitter_provider"
+    t.string   "twitter_auth_token"
+    t.string   "instagram_name"
+    t.string   "instagram_uid"
+    t.string   "instagram_provider"
+    t.string   "instagram_auth_token"
     t.string   "photo_url"
     t.integer  "person_id"
-    t.string   "auth_token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
 end

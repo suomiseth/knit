@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def create
-    @user = User.find_or_create_from_auth_hash(auth_hash)
+    @user = User.find_or_create_from_auth_hash(auth_hash, current_user)
     # maybe forward this to login method in application controller
     session[:user_id] = @user.id
     redirect_to user_path(@user.id)

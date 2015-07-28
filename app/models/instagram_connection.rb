@@ -1,15 +1,11 @@
 class InstagramConnection
   attr_reader :client
 
-  def initialize(token)
-
-    # GETTING THE INSTAGRAM AUTH TOKEN
-    @client = Instagram.client(:access_token => token)
-
+  def initialize(user)
+    @client = Instagram.client(:access_token => user.instagram_auth_token)
   end
 
   def media_feed
-    
     @client.user_media_feed
   end  
 

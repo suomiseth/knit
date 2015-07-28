@@ -10,11 +10,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @instagram = InstagramConnection.new(@user.auth_token)
+    @instagram = InstagramConnection.new(@user)
     @posts = @instagram.select_post 
-    binding.pry
-    @tweets = TwitterConnection.new(current_user).get_tweets
-
+    @tweets = TwitterConnection.new(@user).get_tweets
   end
 
   def settings

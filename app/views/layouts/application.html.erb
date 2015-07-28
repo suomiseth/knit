@@ -22,7 +22,7 @@
       <a class="navbar-brand" href="#">knit</a>
       <% if current_user %>
       <%= link_to 'my feed', user_path(current_user), {class: "navbar-brand"} %>
-      <%= link_to 'my settings', user_settings_path(current_user), {class: "navbar-brand"} %>
+      <%= link_to 'my settings', edit_user_path(current_user), {class: "navbar-brand"} %>
       <% end %>
     </div>
 
@@ -37,7 +37,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
       <% if current_user %>
-        <li><a href="#"><%= "logged in as: #{current_user.name}"  %></a></li>
+        <li><a href="#"><%= "logged in as: #{current_user.user_name}"  %></a></li>
         <li><a href="/logout">logout</a></li>
         <% else %>
         <li><a href="#">log in with:</a></li>
