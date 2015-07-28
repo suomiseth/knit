@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20150727151534) do
     t.string   "provider"
     t.string   "photo_url"
     t.integer  "person_id"
+    t.string   "auth_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
