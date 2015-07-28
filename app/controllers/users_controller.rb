@@ -4,9 +4,10 @@ class UsersController < ApplicationController
     # @instagram = Instagram.user_recent_media("49493754", {:count => 1})
   end
 
-  def settings
-    
+  def show
+    @tweets = TwitterConnection.new(current_user).get_tweets
   end
 
-  
+  def settings
+  end
 end
