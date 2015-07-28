@@ -8,6 +8,50 @@
 </head>
 <body>
 
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><img src="http://ih.constantcontact.com/fs141/1102036630542/img/690.jpg?a=1112250012817" height="30" width="30" alt="knit"></a>
+      <a class="navbar-brand" href="#">knit</a>
+      <% if current_user %>
+      <%= link_to 'my feed', user_path(current_user), {class: "navbar-brand"} %>
+      <%= link_to 'my settings', user_settings_path(current_user), {class: "navbar-brand"} %>
+      <% end %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+<!--         <div class="form-group">
+          <input type="text" class="form-control" placeholder="search your threads">
+        </div> -->
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+      <% if current_user %>
+        <li><a href="#"><%= "logged in as: #{current_user.name}"  %></a></li>
+        <li><a href="/logout">logout</a></li>
+        <% else %>
+        <li><a href="#">log in with:</a></li>
+        <li><%= link_to 'facebook', '/auth/facebook'%></li>
+        <li><a href="#">|</a></li>
+        <li><%= link_to 'twitter', '/auth/twitter'%></li>
+        <li><a href="#">|</a></li>
+        <li><%= link_to 'instagram', '/auth/instagram'%></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
 <%= yield %>
 
 </body>

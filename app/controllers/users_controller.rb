@@ -4,5 +4,9 @@ class UsersController < ApplicationController
     # @instagram = Instagram.user_recent_media("49493754", {:count => 1})
   end
 
+  def settings
+    
+  end
+
   
 end
