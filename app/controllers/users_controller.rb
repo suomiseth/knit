@@ -6,8 +6,8 @@ class UsersController < ApplicationController
 
   def show
     @tweets = TwitterConnection.new(current_user).get_tweets
-
   end
 
-  
+  def settings
+  end
 end
