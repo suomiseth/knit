@@ -27,7 +27,6 @@ class FacebookConnection
   #this would be better to pass a single post and return a single array
   def post_urls
     @posts = posts
-    binding.pry
     @posts.map do |post|
       ids = post["id"].split("_")
       "https://facebook.com/#{ids[0]}/posts/#{ids[1]}"
