@@ -1,0 +1,29 @@
+
+<header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+
+						<h1>Add friends</h1>
+
+                        <%= form_for Person.new  do |f| %>
+                            <%= f.text_field :instagram_handle, placeholder: "friend's instagram", class: 'form-control'%>
+                            <%= f.text_field :twitter_handle, placeholder: "friend's twitter", class: 'form-control'%>
+                            <%= f.text_field :facebook_handle, placeholder: "friend's facebook", class: 'form-control'%>
+                            <%= f.submit :style => "display: none;"%>
+                        <% end %>
+                        <br>
+
+						<%= link_to 'facebook', '#', {class: "btn btn-default btn-lg"}%>
+						<a href="#"></a>
+						<%= link_to 'twitter', '#', {class: "btn btn-default btn-lg"}%>
+						<a href="#"></a>
+						<%= link_to 'instagram', '#', {class: "btn btn-default btn-lg"}%>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</header>
+
