@@ -19,7 +19,6 @@ class InstagramConnection
   end
   #returns in an array of hashes of the people you're following on instagram
   def get_following
-    binding.pry
    @client.user_follows(id = nil)
   end
   #returns an individual person you're following on instagram
