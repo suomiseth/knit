@@ -25,6 +25,25 @@ class InstagramConnection
   def get_specific_user_posts(id)
    @client.user_recent_media(id)
   end
+
+
+  def return_person_posts(person)
+    following = get_following
+    id = nil
+    following.each do |hash|
+      if hash.username == person.instagram_handle
+        id = hash.id
+      end
+    end
+    return id
+  end
+
+
+
+
+
+
+
   # get the token
   # auth_hash["credentials"]["token"]
 
