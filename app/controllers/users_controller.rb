@@ -12,6 +12,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @instagram = InstagramConnection.new(@user) if @user.instagram_uid
     @posts = @instagram.select_post if @user.instagram_uid
+
+    @instagram_follows = @instagram.get_following
+    
     @tweets = TwitterConnection.new(@user).get_tweets if @user.twitter_uid
     @facebook_posts = FacebookConnection.new(@user).post_urls if @user.facebook_uid
   end

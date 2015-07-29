@@ -17,6 +17,14 @@ class InstagramConnection
   def ten_images(ten)
    ten.map{|x| x[:images][:low_resolution][:url]}
   end
+
+  def get_following
+    @client.user_follows(id = nil)
+  end
+
+  def get_specific_user_posts(id)
+    @client.user_recent_media(id)
+  end
   # get the token
   # auth_hash["credentials"]["token"]
 
