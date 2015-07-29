@@ -48,5 +48,8 @@ group :development, :test do
   gem 'omniauth-twitter'
   gem 'omniauth-instagram'
   gem 'twitter'
+  gem 'font-awesome-rails'
+
+
 end
 
