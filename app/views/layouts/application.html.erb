@@ -34,7 +34,7 @@
                     </li>
                     <% end %>
                     <% if current_user %>
-                    <li><a href="#"><%= "logged in as: #{current_user.user_name}"  %></a></li>
+                    <li><a href="#"><%= "logged in #{current_user.user_name}"  %></a></li>
                     <li><a href="/logout">logout</a></li>
                     <% else %>
                     <li><a href="#">log in with:</a></li>

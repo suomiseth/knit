@@ -8,25 +8,19 @@ class FacebookConnection
   end
 
   def posts
-    # not sure if the "me" message here works for other people
     @client.get_object("me/posts")
   end
 
   def followees_posts
-    ##### this is a temporary way of doing this, the regular way is commented out.... 
-    ##### until we have followees built in
-    ##### the real method should return a nested array of each followee's posts"
-    # @user.followees.map do |followee|
-      # @client.get_object("#{followee.facebook_uid}/posts")
-    # end
-    @followee_posts = @client.get_object("me/friends").map do |followee|
-      @client.get_object("#{followee['id']}/posts")
-    end
+    @user.followees.map do |followee|
+      followee.facebook_uid || followee.update(facebook_uid: find_followee_uid(followee))
+      @client.get_object("#{followee.facebook_uid}/posts")
+    end.flatten
   end
 
   #this would be better to pass a single post and return a single array
   def post_urls
-    @posts = posts
+    @posts = followees_posts
     @posts.map do |post|
       ids = post["id"].split("_")
       "https://facebook.com/#{ids[0]}/posts/#{ids[1]}"
@@ -40,5 +34,10 @@ class FacebookConnection
 
   def get_following
     @client.get_object("me/friends")
+  end
+
+  def find_followee_uid(followee)
+    match = get_following.find {|person| person["name"] == followee.facebook_handle}
+    match["id"]
   end
 end
