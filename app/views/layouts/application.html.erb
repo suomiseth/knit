@@ -2,57 +2,61 @@
 <html>
 <head>
   <title>Knit</title>
+  <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <%= link_to 'knit', root_path, {class: "navbar-brand page-scroll"} %>
+            </div>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#"><img src="http://ih.constantcontact.com/fs141/1102036630542/img/690.jpg?a=1112250012817" height="30" width="30" alt="knit"></a>
-      <a class="navbar-brand" href="#">knit</a>
-      <% if current_user %>
-      <%= link_to 'my feed', user_path(current_user), {class: "navbar-brand"} %>
-      <%= link_to 'my settings', edit_user_path(current_user), {class: "navbar-brand"} %>
-      <% end %>
-    </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a> 
+                    </li>
+                    <li>
+                    <% if current_user %>
+                    <%= link_to 'my feed', user_path(current_user), {class: "page-scroll"} %>
+                    </li>
+                    <li>
+                    <%= link_to 'my settings', edit_user_path(current_user), {class: "page-scroll"} %>
+                    </li>
+                    <% end %>
+                    <% if current_user %>
+                    <li><a href="#"><%= "logged in as: #{current_user.user_name}"  %></a></li>
+                    <li><a href="/logout">logout</a></li>
+                    <% else %>
+                    <li><a href="#">log in with:</a></li>
+                    <li><%= link_to 'facebook', '/auth/facebook'%></li>
+                    <li><a href="#">|</a></li>
+                    <li><%= link_to 'twitter', '/auth/twitter'%></li>
+                    <li><a href="#">|</a></li>
+                    <li><%= link_to 'instagram', '/auth/instagram'%></li>
+                    <% end %>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-      </ul>
-      <form class="navbar-form navbar-left" role="search">
-<!--         <div class="form-group">
-          <input type="text" class="form-control" placeholder="search your threads">
-        </div> -->
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-      <% if current_user %>
-        <li><a href="#"><%= "logged in as: #{current_user.user_name}"  %></a></li>
-        <li><a href="/logout">logout</a></li>
-        <% else %>
-        <li><a href="#">log in with:</a></li>
-        <li><%= link_to 'facebook', '/auth/facebook'%></li>
-        <li><a href="#">|</a></li>
-        <li><%= link_to 'twitter', '/auth/twitter'%></li>
-        <li><a href="#">|</a></li>
-        <li><%= link_to 'instagram', '/auth/instagram'%></li>
-        <% end %>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+  <%= yield %>
 
-<%= yield %>
-
+<footer>
+        <div class="container text-center">
+            <p>Copyright &copy; knit 2015</p>
+        </div>
+    </footer>
 </body>
 </html>
