@@ -11,14 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150727151534) do
-
-  create_table "facebook_accounts", force: :cascade do |t|
-    t.integer  "person_id"
-    t.string   "handle"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20150727151155) do
 
   create_table "follows", force: :cascade do |t|
     t.integer  "follower_id"
@@ -27,25 +20,17 @@ ActiveRecord::Schema.define(version: 20150727151534) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "instagram_accounts", force: :cascade do |t|
-    t.integer  "person_id"
-    t.string   "handle"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "people", force: :cascade do |t|
     t.string   "name"
     t.string   "photo_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "twitter_accounts", force: :cascade do |t|
-    t.integer  "person_id"
-    t.string   "handle"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "instagram_handle"
+    t.string   "twitter_handle"
+    t.string   "facebook_handle"
+    t.string   "instagram_uid"
+    t.string   "twitter_uid"
+    t.string   "facebook_uid"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "users", force: :cascade do |t|
