@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">knit</h1>
-                        <p class="intro-text">Your best friends in one place<br>Created at Flatiron.</p>
+                        <p class="intro-text">All your best friends in one place.</p>
                         <a href="#about" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
@@ -19,9 +19,11 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>About knit</h2>
-                <p>knit Combines social feeds from your favorite people. <a href="#">Your feed</a> shows everything you care about and nothing else</p><br>
-            
-              <%= link_to 'Make a new account', new_user_path, {class: "btn btn-default btn-lg"}%>
+                <p>knit weaves a close knit social feed with nothing but you favorite people.<br>Create an account and enjoy <a href="#">a different kind of feed.</a> </p><br>
+            <% if current_user %>
+            <% else %>
+            <%= link_to 'Make a new account', new_user_path, {class: "btn btn-default btn-lg"}%>
+            <% end %>
                         
 
             </div>
