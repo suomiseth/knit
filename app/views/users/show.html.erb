@@ -20,9 +20,10 @@
 
           <% if @facebook_posts %>
           <h2>Latest Facebook Posts</h2>
-          <% @facebook_posts.each.with_index do |post,i| %>
+          <% @facebook_posts.each do |post| %>
 
-          <%= render 'embedded_fb_post', post: post, i: i %>
+          <%= render 'fb_post', post: post %>
+
           
           <% end %>
           <% end %>

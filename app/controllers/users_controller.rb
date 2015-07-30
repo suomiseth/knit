@@ -23,8 +23,7 @@ class UsersController < ApplicationController
     end
 
     if @user.facebook_uid
-      @facebook_posts = FacebookConnection.new(@user).followees_posts 
-      @fb_followee_posts_urls = FacebookConnection.new(@user).post_urls
+      @facebook_posts = FacebookConnection.new(@user).get_posts 
     end
   end
 
