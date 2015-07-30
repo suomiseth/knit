@@ -13,8 +13,10 @@
 
 						<% if @tweets %>
 							<h2>Latest tweets: </h2>
-							<% @tweets.each do |tweet| %>
-							<p><%= image_tag "twitter.png", size: "20" %><%= tweet.text %> <b>timestamp :</b> <%= tweet.created_at %> </p>
+							<% @tweets.each do |tweet_array| %>
+								<%tweet_array.each do |tweet|  %>
+									<p><%= image_tag "twitter.png", size: "20" %><%= tweet.user.screen_name %><br> <%= tweet.text %></p>
+								<% end  %>
 							<% end  %>
 						<% end %>
 
