@@ -14,9 +14,26 @@ class TwitterConnection
       config.access_token_secret = ENV["TWITTER_ACCESS_TOKEN_SECRET"]
     end
   end
-  
-  def get_tweets
-    client.user_timeline(@user.twitter_uid.to_i, count: 10)
+
+  def get_handles
+    @user.followees.collect do |followee|
+      followee.twitter_handle
+    end
   end
+
+  def get_uid
+    get_handles.collect do |handle|
+      client.user(handle).id
+    end
+  end
+
+  def get_tweets
+    get_uid.collect do |uid|
+      client.user_timeline(uid.to_i, count: 10)
+    end
+  end
+
 end
+
+
 
