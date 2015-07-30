@@ -4,7 +4,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        
                         <h3>Add all your accounts for the best experience</h3>
 				         <%= link_to 'facebook', '/auth/facebook', {class: "btn btn-default btn-lg"}%>
                         <a href="#"></a>
@@ -14,26 +13,11 @@
                         <br><br><br><br>
                         
                         <h1>Add friends</h1>
-                            <div class="row num_one">
-                                <div class="form-group col-xs-4">
-                                    <%= form_for Person.new  do |f| %>
-                                        <%= f.text_field :instagram_handle, placeholder: "instagram", class: 'form-control input-lg'%>
-                                </div>
-                                <div class="form-group col-xs-4">
-                                    <%= f.text_field :twitter_handle, placeholder: "twitter handle", class: 'form-control input-lg'%>
-                                </div>
-                                <div class="form-group col-xs-4">    
-                                    <%= f.text_field :facebook_handle, placeholder: "facebook", class: 'form-control input-lg'%>
-                                </div>  
-                            </div>
-                                <%= f.submit :style => "display: none;"%>
-                            <% end %>
-                        <br>
                             
-                            <div class="row num_two">
-                                <div class="form-group col-xs-4">
+                            <div class="row">
                                     <%= form_for Person.new  do |f| %>
-                                        <%= f.text_field :instagram_handle, placeholder: "instagram", class: 'form-control input-lg'%>
+                                <div class="form-group col-xs-4">
+                                    <%= f.text_field :instagram_handle, placeholder: "instagram", class: 'form-control input-lg'%>
                                 </div>
                                 <div class="form-group col-xs-4">
                                     <%= f.text_field :twitter_handle, placeholder: "twitter handle", class: 'form-control input-lg'%>
@@ -42,10 +26,9 @@
                                     <%= f.text_field :facebook_handle, placeholder: "facebook", class: 'form-control input-lg'%>
                                 </div>  
                             </div>
-                                <%= f.submit :style => "display: none;"%>
+                                    <%= f.submit "ADD ACCOUNTS", {class: 'btn btn-default'}%>
                             <% end %>
-
-
+                    
                     </div>
                 </div>
             </div>
