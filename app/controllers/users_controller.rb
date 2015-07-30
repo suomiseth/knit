@@ -10,23 +10,23 @@ class UsersController < ApplicationController
   end
 
   def show
-
     @user = User.find(params[:id])
-    @instagram = InstagramConnection.new(@user) if @user.instagram_uid
-    @posts = @instagram.select_post if @user.instagram_uid
-    @tweets = TwitterConnection.new(@user).twitter_connect if @user.twitter_uid
-    @instagram_follows = @instagram.get_following if @user.instagram_uid
-    # @persons_insta_posts = @instagram.search_for_user(@person)
-    @instagram_posts = @instagram.get_post_details(@user) 
 
+    if @user.instagram_uid
+      @instagram = InstagramConnection.new(@user)
+      @instagram_posts = @instagram.get_post_details(@user) 
+    end
 
-    @tweets = TwitterConnection.new(@user).get_tweets if @user.twitter_uid
-    
-    @facebook_posts = FacebookConnection.new(@user).post_urls if @user.facebook_uid
+    if @user.twitter_uid
+      @tweets = TwitterConnection.new(@user).twitter_connect
+    end
+
+    if @user.facebook_uid
+      @facebook_posts = FacebookConnection.new(@user).get_posts 
+    end
   end
 
   def edit
-    
   end
 
   def settings

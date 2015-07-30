@@ -71,7 +71,6 @@ class InstagramConnection
         return_array << return_hash
       end
     end
-    binding.pry
     return_array
   end
 

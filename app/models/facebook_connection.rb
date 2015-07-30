@@ -7,35 +7,37 @@ class FacebookConnection
     @user = user
   end
 
-  def posts
-    # not sure if the "me" message here works for other people
-    @client.get_object("me/posts")
+  def get_posts
+    @user.followees.map do |followee|
+      followee.facebook_uid || followee.update(facebook_uid: find_followee_uid(followee))
+      get_followee_posts(followee)
+    end.flatten.compact
   end
 
-  def followees_posts
-    ##### this is a temporary way of doing this, the regular way is commented out.... 
-    ##### until we have followees built in
-    ##### the real method should return a nested array of each followee's posts"
-    # @user.followees.map do |followee|
-      # @client.get_object("#{followee.facebook_uid}/posts")
-    # end
-    @followee_posts = @client.get_object("me/friends").map do |followee|
-      @client.get_object("#{followee['id']}/posts")
+  def find_followee_uid(followee)
+    match = get_following.find {|person| person["name"] == followee.facebook_handle}
+    match ? match["id"] : nil
+  end
+  
+  def get_followee_posts(followee)
+    if followee.facebook_uid
+      posts = @client.get_object("#{followee.facebook_uid}/posts?fields=id, created_time, message, name, picture")
+      posts.map do |post|
+        {
+          handle: followee.facebook_handle,
+          uri: post_url(post),
+          photo_uri: post['picture'],
+          text: post['message'],
+          post_time: post['created_time'].split("T").join(" "),
+          source: "facebook"
+        }
+      end
     end
   end
 
-  #this would be better to pass a single post and return a single array
-  def post_urls
-    @posts = posts
-    @posts.map do |post|
-      ids = post["id"].split("_")
-      "https://facebook.com/#{ids[0]}/posts/#{ids[1]}"
-    end
-  end
-
-  def followee_posts_urls
-    @followees_posts.flatten.map do |followee_posts|
-    end
+  def post_url(post)
+    ids = post["id"].split("_")
+    "https://facebook.com/#{ids[0]}/posts/#{ids[1]}"
   end
 
   def get_following
