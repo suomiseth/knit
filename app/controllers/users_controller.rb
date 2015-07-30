@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       @facebook_posts = FacebookConnection.new(@user).get_posts 
       @posts += @facebook_posts
     end
-    @posts = @posts.sort_by{|post| post[:post_time] }.reverse.slice(0,5)
+    @posts = @posts.sort_by{|post| post[:post_time] }.reverse.slice(0,20)
     
   end
 
