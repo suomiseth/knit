@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     end
 
     if @user.twitter_uid
-      @tweets = TwitterConnection.new(@user).get_tweets
+      @tweets = TwitterConnection.new(@user).twitter_connect
     end
 
     if @user.facebook_uid
@@ -30,6 +30,7 @@ class UsersController < ApplicationController
   end
 
   def settings
+
   end
   
 end
