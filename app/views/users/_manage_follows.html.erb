@@ -26,9 +26,9 @@
                     <br><br><br><br>
 
                     <h1>Manage friends.</h1>
-                    <div class="row num_one">
+                    <div class="row">
+                        <%= form_for Person.new  do |f| %>
                         <div class="form-group col-xs-4">
-                            <%= form_for Person.new  do |f| %>
                             <%= f.text_field :instagram_handle, placeholder: "instagram", class: 'form-control input-lg'%>
                         </div>
                         <div class="form-group col-xs-4">
@@ -38,24 +38,9 @@
                             <%= f.text_field :facebook_handle, placeholder: "facebook", class: 'form-control input-lg'%>
                         </div>  
                     </div>
-                    <%= f.submit :style => "display: none;"%>
+                    <%= f.submit "ADD FRIENDS", {class: 'btn btn-default'}%>
                     <% end %>
                     <br>
-
-                    <div class="row num_two">
-                        <div class="form-group col-xs-4">
-                            <%= form_for Person.new  do |f| %>
-                            <%= f.text_field :instagram_handle, placeholder: "instagram", class: 'form-control input-lg'%>
-                        </div>
-                        <div class="form-group col-xs-4">
-                            <%= f.text_field :twitter_handle, placeholder: "twitter handle", class: 'form-control input-lg'%>
-                        </div>
-                        <div class="form-group col-xs-4">    
-                            <%= f.text_field :facebook_handle, placeholder: "facebook", class: 'form-control input-lg'%>
-                        </div>  
-                    </div>
-                    <%= f.submit :style => "display: none;"%>
-                    <% end %>
                 </div>
             </div>
         </div>
