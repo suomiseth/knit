@@ -11,19 +11,24 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
+    @posts = []
     if @user.instagram_uid
       @instagram = InstagramConnection.new(@user)
       @instagram_posts = @instagram.get_post_details(@user) 
+      @posts += @instagram_posts
     end
 
     if @user.twitter_uid
       @tweets = TwitterConnection.new(@user).twitter_connect
+      @posts += @tweets
     end
 
     if @user.facebook_uid
       @facebook_posts = FacebookConnection.new(@user).get_posts 
+      @posts += @facebook_posts
     end
+    @posts = @posts.sort_by{|post| post[:post_time] }.reverse.slice(0,5)
+    
   end
 
   def edit

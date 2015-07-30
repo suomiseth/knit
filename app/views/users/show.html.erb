@@ -1,47 +1,26 @@
 <header class="content">
   <div class="intro-body">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+    <div class="container-fluid">
+      <div class="row feed">
+        <!-- <div class="col-md-8 col-md-offset-2"> -->
 
-            <% if @instagram_posts %>
-              <h2>Latest instagram posts: </h2>
-              <% @instagram_posts.each do |ig_post|%>
-                <a href="<%=ig_post[:uri] %>"> <div class="node">
-                  @<%= ig_post[:handle] %> <br>
-                  <%= image_tag(ig_post[:photo_uri]) %> <br>
-                  <h3><%= ig_post[:text] %> </h3> <br>
-                </div></a>
-              <% end %> 
-              <br>    
-            <% end %>
+            <% if @posts %>
+              <h2 class="text-center">Latest posts: </h2>
+              
+                <% @posts.each do |post|%>
+                <div class="col-lg-4">
+                  <a href="<%=post[:uri] %>"> <div class="node">
+                    @<%= post[:handle] %> <br>
+                    <%= image_tag(post[:photo_uri], {class: "center-block"}) %> <br>
+                    <p><%= post[:text] %> </p> <br>
+                  </div></a>
+                </div>
+                  <% end %> 
+                <br>    
+                <% end %>
+        
 
-						<% if @tweets %>
-							<h2>Latest tweets: </h2>
-							<% @tweets.each do |tweet|%>
-								<a href="<%=tweet[:uri] %>"> <div class="node">
-									@<%= tweet[:handle] %> <br>
-									<%= image_tag(tweet[:photo_uri]) %> <br>
-									<h3><%= tweet[:text] %> </h3> <br>
-								</div></a>
-							<% end %>	
-							<br>		
-						<% end %>
-    
-            <% if @facebook_posts %>
-              <h2>Latest facebook posts: </h2>
-              <% @facebook_posts.each do |fb_post|%>
-                <a href="<%=fb_post[:uri] %>"> <div class="node">
-                  @<%= fb_post[:handle] %> <br>
-                  <%= image_tag(fb_post[:photo_uri]) %> <br>
-                  <h3><%= fb_post[:text] %> </h3> <br>
-                </div></a>
-              <% end %> 
-              <br>    
-            <% end %>
-
-
-        </div>
+        <!-- </div> -->
       </div>
     </div>
   </div>
