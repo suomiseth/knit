@@ -30,11 +30,26 @@ class TwitterConnection
   end
 
   def get_tweets
-    get_uid.compact.map do |uid|
-      if uid != nil
-        client.user_timeline(uid.to_i, count: 10)
+    get_handles.compact.map do |handle|
+      if handle != nil
+        client.user_timeline(handle, count: 5)
       end
     end
+  end
+
+  def twitter_connect
+    tweet_array = []
+    get_tweets.flatten.each do |tweet|
+    tweet_hash = {}
+      tweet_hash[:handle] = tweet.user.screen_name
+      tweet_hash[:uri] = tweet.uri.to_s
+      tweet_hash[:photo_uri] = tweet.media[0].media_url.to_s if(tweet.media.present?)
+      tweet_hash[:text] = tweet.text
+      tweet_hash[:post_time] = tweet.created_at
+      tweet_hash[:source] = "twitter"
+      tweet_array << tweet_hash
+    end
+    tweet_array
   end
 
 end

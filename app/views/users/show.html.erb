@@ -13,11 +13,14 @@
 
 						<% if @tweets %>
 							<h2>Latest tweets: </h2>
-							<% @tweets.each do |tweet_array| %>
-								<%tweet_array.each do |tweet|  %>
-									<p><%= image_tag "twitter.png", size: "20" %><%= tweet.user.screen_name %><br> <%= tweet.text %></p>
-								<% end  %>
-							<% end  %>
+							<% @tweets.each do |tweet|%>
+								<a href="<%=tweet[:uri] %>"> <div class="node">
+									@<%= tweet[:handle] %> <br>
+									<%= image_tag(tweet[:photo_uri]) %> <br>
+									<h3><%= tweet[:text] %> </h3> <br>
+								</div></a>
+							<% end %>	
+							<br>		
 						<% end %>
 
 						<% if @facebook_posts %>
