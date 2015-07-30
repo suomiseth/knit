@@ -1,35 +1,39 @@
 <header class="content">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
+  <div class="intro-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
 
-						<% if @posts %>
-							<h2>Latest grams: </h2>
-							<% @posts.each do |post| %>
-							<p><img src="<%=post%>" alt=""></p>
-							<%end%>
-						<% end %>
+          <% if @posts %>
+          <h2>Latest grams: </h2>
+          <% @posts.each do |post| %>
+          <p><img src="<%=post%>" alt=""></p>
+          <%end%>
+          <% end %>
 
 						<% if @tweets %>
 							<h2>Latest tweets: </h2>
-							<% @tweets.each do |tweet| %>
-							<p><%= image_tag "twitter.png", size: "20" %><%= tweet.text %> <b>timestamp :</b> <%= tweet.created_at %> </p>
-							<% end  %>
+							<% @tweets.each do |tweet|%>
+								<a href="<%=tweet[:uri] %>"> <div class="node">
+									@<%= tweet[:handle] %> <br>
+									<%= image_tag(tweet[:photo_uri]) %> <br>
+									<h3><%= tweet[:text] %> </h3> <br>
+								</div></a>
+							<% end %>	
+							<br>		
 						<% end %>
 
-						<% if @facebook_posts %>
-							<h2>Latest Facebook Posts</h2>
-							<% @facebook_posts.each do |post| %>
-							<p><a href=<%= post %> %><%= post %></a></p>
-							<% end %>
-						<% end %>
+          <% if @facebook_posts %>
+          <h2>Latest Facebook Posts</h2>
+          <% @facebook_posts.each do |post| %>
 
-                    </div>
-                </div>
-            </div>
+          <%= render 'fb_post', post: post %>
+
+          <% end %>
+          <% end %>
+
         </div>
-    </header>
-
-
-
+      </div>
+    </div>
+  </div>
+</header>
