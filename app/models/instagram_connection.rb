@@ -19,11 +19,16 @@ class InstagramConnection
   end
   #returns in an array of hashes of the people you're following on instagram
   def get_following
-   @client.user_follows(id = nil)
+   @client.user_follows(id = nil, options = {:count => 100})
+   binding.pry
   end
   #returns an individual person you're following on instagram
   def get_specific_user_posts(id)
    @client.user_recent_media(id)
+  end
+
+  def search_for_user(handle)
+    @client.user_search(handle)
   end
 
 
