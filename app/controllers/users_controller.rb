@@ -14,8 +14,7 @@ class UsersController < ApplicationController
 
     if @user.instagram_uid
       @instagram = InstagramConnection.new(@user)
-      @posts = @instagram.select_post if @user.instagram_uid
-      @instagram_follows = @instagram.get_following
+      @instagram_posts = @instagram.get_post_details(@user) 
     end
 
     if @user.twitter_uid
