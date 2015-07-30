@@ -20,15 +20,10 @@ class FacebookConnection
 
   #this would be better to pass a single post and return a single array
   def post_urls
-    @posts = followees_posts
-    @posts.map do |post|
+    posts = followees_posts
+    posts.map do |post|
       ids = post["id"].split("_")
       "https://facebook.com/#{ids[0]}/posts/#{ids[1]}"
-    end
-  end
-
-  def followee_posts_urls
-    @followees_posts.flatten.map do |followee_posts|
     end
   end
 
