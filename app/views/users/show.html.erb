@@ -4,12 +4,17 @@
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
 
-          <% if @posts %>
-          <h2>Latest grams: </h2>
-          <% @posts.each do |post| %>
-          <p><img src="<%=post%>" alt=""></p>
-          <%end%>
-          <% end %>
+            <% if @instagram_posts %>
+              <h2>Latest instagram posts: </h2>
+              <% @instagram_posts.each do |ig_post|%>
+                <a href="<%=ig_post[:uri] %>"> <div class="node">
+                  @<%= ig_post[:handle] %> <br>
+                  <%= image_tag(ig_post[:photo_uri]) %> <br>
+                  <h3><%= ig_post[:text] %> </h3> <br>
+                </div></a>
+              <% end %> 
+              <br>    
+            <% end %>
 
 						<% if @tweets %>
 							<h2>Latest tweets: </h2>
@@ -22,15 +27,19 @@
 							<% end %>	
 							<br>		
 						<% end %>
+    
+            <% if @facebook_posts %>
+              <h2>Latest facebook posts: </h2>
+              <% @facebook_posts.each do |fb_post|%>
+                <a href="<%=fb_post[:uri] %>"> <div class="node">
+                  @<%= fb_post[:handle] %> <br>
+                  <%= image_tag(fb_post[:photo_uri]) %> <br>
+                  <h3><%= fb_post[:text] %> </h3> <br>
+                </div></a>
+              <% end %> 
+              <br>    
+            <% end %>
 
-          <% if @facebook_posts %>
-          <h2>Latest Facebook Posts</h2>
-          <% @facebook_posts.each do |post| %>
-
-          <%= render 'fb_post', post: post %>
-
-          <% end %>
-          <% end %>
 
         </div>
       </div>

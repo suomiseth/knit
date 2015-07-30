@@ -17,10 +17,6 @@ class InstagramConnection
   def get_images(ten)
    return ten.map{|x| x[:images][:low_resolution][:url]}
   end
-  #returns in an array of hashes of the people you're following on instagram
-  def get_following
-   @client.user_follows(id = nil, options = {:count => 100})
-  end
 
   #returns an individual person you're following on instagram
   def get_specific_user_posts(id)
@@ -30,7 +26,8 @@ class InstagramConnection
 
   # searches instagram for a specific username
   def search_for_user(person)
-    if person.instagram_handle.strip != ''
+
+    if person.instagram_handle.strip != ""
       result = @client.user_search(person.instagram_handle)
       person.instagram_uid = result[0].id
       person.instagram_handle = result[0].username
@@ -78,33 +75,6 @@ class InstagramConnection
 
 
 
-  def followees_posts
-   @user.followees.map do |followee|
-     followee.facebook_uid || followee.update(facebook_uid: find_followee_uid(followee))
-     @client.get_object("#{followee.facebook_uid}/posts")
-   end.flatten
-  end
-
-  # gives us the posts of a specific user when sending their instagram UID in.
-  def return_person_posts(person)
-    following = get_following
-    id = nil
-    following.each do |hash|
-      if hash.username == person.instagram_handle
-        id = hash.id
-      end
-    end
-    return id
-  end
-
 end
 
 
-
-
-
-
-# def find_followee_uid(followee)
-#    match = get_following.find {|person| person["name"] == followee.facebook_handle}
-#    match["id"]
-# end
