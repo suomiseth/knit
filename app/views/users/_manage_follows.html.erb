@@ -1,54 +1,64 @@
 
 <header class="intro">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        
-                        <h3>Add all your accounts for the best experience</h3>
-				         <%= link_to 'facebook', '/auth/facebook', {class: "btn btn-default btn-lg"}%>
-                        <a href="#"></a>
-                        <%= link_to 'twitter', '/auth/twitter', {class: "btn btn-default btn-lg"}%>
-                        <a href="#"></a>
-                        <%= link_to 'instagram', '/auth/instagram', {class: "btn btn-default btn-lg"}%>
-                        <br><br><br><br>
-                        
-                        <h1>Add friends</h1>
-                            <div class="row num_one">
-                                <div class="form-group col-xs-4">
-                                    <%= form_for Person.new  do |f| %>
-                                        <%= f.text_field :instagram_handle, placeholder: "instagram", class: 'form-control input-lg'%>
-                                </div>
-                                <div class="form-group col-xs-4">
-                                    <%= f.text_field :twitter_handle, placeholder: "twitter handle", class: 'form-control input-lg'%>
-                                </div>
-                                <div class="form-group col-xs-4">    
-                                    <%= f.text_field :facebook_handle, placeholder: "facebook", class: 'form-control input-lg'%>
-                                </div>  
-                            </div>
-                                <%= f.submit :style => "display: none;"%>
-                            <% end %>
-                        <br>
-                            
-                            <div class="row num_two">
-                                <div class="form-group col-xs-4">
-                                    <%= form_for Person.new  do |f| %>
-                                        <%= f.text_field :instagram_handle, placeholder: "instagram", class: 'form-control input-lg'%>
-                                </div>
-                                <div class="form-group col-xs-4">
-                                    <%= f.text_field :twitter_handle, placeholder: "twitter handle", class: 'form-control input-lg'%>
-                                </div>
-                                <div class="form-group col-xs-4">    
-                                    <%= f.text_field :facebook_handle, placeholder: "facebook", class: 'form-control input-lg'%>
-                                </div>  
-                            </div>
-                                <%= f.submit :style => "display: none;"%>
-                            <% end %>
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <% if !(current_user.facebook_uid && current_user.twitter_uid && current_user.instagram_uid) %>
+                    <h3>Authorize your accounts.</h3>
+                    <% if current_user.facebook_uid %>
+                    <%= link_to 'facebook', '/auth/facebook', {class: "btn btn-default btn-lg disabled"}%>
+                    <% else %>
+                    <%= link_to 'facebook', '/auth/facebook', {class: "btn btn-default btn-lg"}%>
+                    <% end %>
+                    <% if current_user.twitter_uid %>
+                    <%= link_to 'twitter', '/auth/twitter', {class: "btn btn-default btn-lg disabled"}%>
+                    <% else %>
+                    <%= link_to 'twitter', '/auth/twitter', {class: "btn btn-default btn-lg"}%>
+                    <% end %>
 
+                    <% if current_user.instagram_uid %>
+                    <%= link_to 'instagram', '/auth/instagram', {class: "btn btn-default btn-lg disabled"}%>
+                    <% else %>
+                    <%= link_to 'instagram', '/auth/instagram', {class: "btn btn-default btn-lg"}%>
+                    <% end %>
+                    <% end %>
+                    <br><br><br><br>
 
+                    <h1>Manage friends.</h1>
+                    <div class="row num_one">
+                        <div class="form-group col-xs-4">
+                            <%= form_for Person.new  do |f| %>
+                            <%= f.text_field :instagram_handle, placeholder: "instagram", class: 'form-control input-lg'%>
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <%= f.text_field :twitter_handle, placeholder: "twitter handle", class: 'form-control input-lg'%>
+                        </div>
+                        <div class="form-group col-xs-4">    
+                            <%= f.text_field :facebook_handle, placeholder: "facebook", class: 'form-control input-lg'%>
+                        </div>  
                     </div>
+                    <%= f.submit :style => "display: none;"%>
+                    <% end %>
+                    <br>
+
+                    <div class="row num_two">
+                        <div class="form-group col-xs-4">
+                            <%= form_for Person.new  do |f| %>
+                            <%= f.text_field :instagram_handle, placeholder: "instagram", class: 'form-control input-lg'%>
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <%= f.text_field :twitter_handle, placeholder: "twitter handle", class: 'form-control input-lg'%>
+                        </div>
+                        <div class="form-group col-xs-4">    
+                            <%= f.text_field :facebook_handle, placeholder: "facebook", class: 'form-control input-lg'%>
+                        </div>  
+                    </div>
+                    <%= f.submit :style => "display: none;"%>
+                    <% end %>
                 </div>
             </div>
         </div>
+    </div>
 </header>
 

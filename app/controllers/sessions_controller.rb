@@ -2,9 +2,12 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_or_create_from_auth_hash(auth_hash, current_user)
-    # maybe forward this to login method in application controller
     session[:user_id] = @user.id
-    redirect_to user_path(@user.id)
+    if (@user.facebook_uid && @user.twitter_uid && @user.instagram_uid)
+      redirect_to user_path(@user.id)
+    else
+      redirect_to edit_user_path(@user)
+    end
   end 
 
   def destroy

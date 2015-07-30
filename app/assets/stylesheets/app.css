@@ -10,3 +10,10 @@
 .feed{
 	margin-top: 150px;
 }
+
+.btn-default.disabled{
+  background-color: transparent;
+  color: #AAA;
+  border-color: #AAA;
+  opacity: .6;
+} 
