@@ -16,24 +16,29 @@ class TwitterConnection
   end
 
   def get_handles
-    @user.followees.collect do |followee|
+    @user.followees.map do |followee|
       followee.twitter_handle
     end
   end
 
   def get_uid
-    get_handles.collect do |handle|
-      client.user(handle).id
+    get_handles.map do |handle|
+        if handle != ""
+          client.user(handle).id
+        end
     end
   end
 
   def get_tweets
-    get_uid.collect do |uid|
-      client.user_timeline(uid.to_i, count: 10)
+    get_uid.compact.map do |uid|
+      if uid != nil
+        client.user_timeline(uid.to_i, count: 10)
+      end
     end
   end
 
 end
+
 
 
 
