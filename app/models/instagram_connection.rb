@@ -30,11 +30,13 @@ class InstagramConnection
 
   # searches instagram for a specific username
   def search_for_user(person)
-    result = @client.user_search(person.instagram_handle)
-    person.instagram_uid = result[0].id
-    person.instagram_handle = result[0].username
-    person.name = result[0].full_name
-    person.save
+    if person.instagram_handle.strip != ''
+      result = @client.user_search(person.instagram_handle)
+      person.instagram_uid = result[0].id
+      person.instagram_handle = result[0].username
+      person.name = result[0].full_name
+      person.save
+    end
   end
 
 

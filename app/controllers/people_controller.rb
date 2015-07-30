@@ -12,7 +12,9 @@ class PeopleController < ApplicationController
     @person.instagram_uid = id
     @person.save
     
+    #this returns 
     @insta_search = @instagram.search_for_user(@person)
+
     # id = @instagram.return_person_posts(@person)
     # @person.instagram_uid = id
     # @person.save
