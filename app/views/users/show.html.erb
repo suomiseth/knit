@@ -2,25 +2,31 @@
   <div class="intro-body">
     <div class="container-fluid">
       <div class="row feed">
+        <!-- <div id="wrapper">
+          <div id="columns"> -->
+            <!-- <div class="pin"> -->
         <!-- <div class="col-md-8 col-md-offset-2"> -->
 
-            <% if @posts %>
-              <h2 class="text-center">Latest posts: </h2>
-              
-                <% @posts.each do |post|%>
-                <div class="col-lg-4">
-                  <a href="<%=post[:uri] %>"> <div class="node">
-                    @<%= post[:handle] %> <br>
-                    <%= image_tag(post[:photo_uri], {class: "center-block"}) %> <br>
-                    <p><%= post[:text] %> </p> <br>
-                  </div></a>
-                </div>
+              <% if @posts %>
+                <h2 class="text-center">Latest posts: </h2>
+                
+                  <% @posts.each do |post|%>
+                  <div class="col-lg-4">
+                    <a href="<%=post[:uri] %>"> <div class="node" >
+                      @<%= post[:handle] %> <br>
+                      <%= image_tag(post[:photo_uri], {class: "center-block img-responsive"}) %> <br>
+                      <p><%= post[:text] %> </p> <br>
+                    </div></a>
+                  </div>
                   <% end %> 
-                <br>    
-                <% end %>
+                  <br>    
+              <% end %>
         
 
         <!-- </div> -->
+           <!--  </div> -->
+          <!-- </div>
+        </div> -->
       </div>
     </div>
   </div>
