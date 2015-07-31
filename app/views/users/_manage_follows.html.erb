@@ -25,7 +25,7 @@
           <% end %>
           <br><br><br><br>
 
-          <h1>Manage friends.</h1>
+          <h1>add friends.</h1>
           <div class="row">
             <%= form_for Person.new  do |f| %>
             <div class="form-group col-xs-4">    
@@ -40,7 +40,7 @@
             <%= f.submit "ADD FRIENDS", {class: 'btn btn-default'}%>
           </div>
           <br><br>
-          <h1><%= "Remove follows" if !@follows.empty? %></h1>
+          <h1><%= "remove friends" if !@follows.empty? %></h1>
           <div class "row">
             <%@follows.each do |follow| %>
             <% person = Person.find(follow.followee_id) %>
