@@ -1,0 +1,23 @@
+
+<header class="intro">
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+        
+
+                    <h1>Remove friends here</h1>
+
+                        <%@follows.each do |follow| %>
+                        <p><%= follow.twitter_handle %></p>
+                        <%end %>
+   
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
