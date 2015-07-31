@@ -36,18 +36,20 @@
             </div>
             <div class="form-group col-xs-4">
               <%= f.text_field :instagram_handle, placeholder: "instagram", class: 'form-control input-lg'%>
+              <br><br>
             </div>
             <%= f.submit "ADD FRIENDS", {class: 'btn btn-default'}%>
           </div>
-          <br><br>
-          <h1><%= "remove friends" if !@follows.empty? %></h1>
+          <br><br><br><br>
+          <h2><%= "remove friends." if !@follows.empty? %></h2>
           <div class "row">
             <%@follows.each do |follow| %>
             <% person = Person.find(follow.followee_id) %>
-            <p>
+            
               <%= link_to 'x', follow_path(follow), method: :delete %>
               <%= person.name || person.facebook_handle || person.twitter_handle|| person.instagram_handle %>
-            </p>
+              &nbsp;&nbsp;&nbsp;
+
             <%end %>
           </div>
           <% end %>
