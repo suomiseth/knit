@@ -31,7 +31,7 @@ class TwitterConnection
 
   def get_tweets
     get_handles.compact.map do |handle|
-      if handle != nil
+      if handle != nil && handle != ''
         client.user_timeline(handle, count: 5)
       end
     end
