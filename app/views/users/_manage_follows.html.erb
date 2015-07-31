@@ -43,9 +43,10 @@
           <h1><%= "Remove follows" if !@follows.empty? %></h1>
           <div class "row">
             <%@follows.each do |follow| %>
+            <% person = Person.find(follow.followee_id) %>
             <p>
               <%= link_to 'x', follow_path(follow), method: :delete %>
-              <%= Person.find(follow.followee_id).name || Person.find(follow.followee_id).facebook_handle || Person.find(follow.followee_id).twitter_handle || Person.find(follow.followee_id).instagram_handle%>
+              <%= person.name || person.facebook_handle || person.twitter_handle|| person.instagram_handle %>
             </p>
             <%end %>
           </div>

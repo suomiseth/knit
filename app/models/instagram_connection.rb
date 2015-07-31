@@ -28,8 +28,7 @@ class InstagramConnection
 
   # searches instagram for a specific username
   def search_for_user(person)
-
-    if person.instagram_handle.strip != ""
+    if person.instagram_handle
       result = @client.user_search(person.instagram_handle)
       person.instagram_uid = result[0].id
       person.instagram_handle = result[0].username
