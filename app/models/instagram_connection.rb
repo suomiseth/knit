@@ -20,7 +20,9 @@ class InstagramConnection
 
   #returns an individual person you're following on instagram
   def get_specific_user_posts(id)
-   @client.user_recent_media(id)
+    if id
+     @client.user_recent_media(id) unless @client.user_relationship(id)['target_user_is_private']
+    end
   end
 
 
@@ -43,8 +45,8 @@ class InstagramConnection
     # and construct hash for each folowee
     all_posts = user.followees.map do |folowee|
       get_specific_user_posts(folowee.instagram_uid)
-    end
-    y = nested_arrays_to_hash(all_posts)
+    end.compact
+    nested_arrays_to_hash(all_posts)
   end #end get_post_details
 
 
