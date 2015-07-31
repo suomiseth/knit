@@ -1,50 +1,59 @@
 
 <header class="intro">
-    <div class="intro-body">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <% if !(current_user.facebook_uid && current_user.twitter_uid && current_user.instagram_uid) %>
-                    <h3>Authorize your accounts.</h3>
-                    <% if current_user.facebook_uid %>
-                    <%= link_to 'facebook', '/auth/facebook', {class: "btn btn-default btn-lg disabled"}%>
-                    <% else %>
-                    <%= link_to 'facebook', '/auth/facebook', {class: "btn btn-default btn-lg"}%>
-                    <% end %>
-                    <% if current_user.twitter_uid %>
-                    <%= link_to 'twitter', '/auth/twitter', {class: "btn btn-default btn-lg disabled"}%>
-                    <% else %>
-                    <%= link_to 'twitter', '/auth/twitter', {class: "btn btn-default btn-lg"}%>
-                    <% end %>
+  <div class="intro-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <% if !(current_user.facebook_uid && current_user.twitter_uid && current_user.instagram_uid) %>
+          <h3>Authorize your accounts.</h3>
+          <% if current_user.facebook_uid %>
+          <%= link_to 'facebook', '/auth/facebook', {class: "btn btn-default btn-lg disabled"}%>
+          <% else %>
+          <%= link_to 'facebook', '/auth/facebook', {class: "btn btn-default btn-lg"}%>
+          <% end %>
+          <% if current_user.twitter_uid %>
+          <%= link_to 'twitter', '/auth/twitter', {class: "btn btn-default btn-lg disabled"}%>
+          <% else %>
+          <%= link_to 'twitter', '/auth/twitter', {class: "btn btn-default btn-lg"}%>
+          <% end %>
 
-                    <% if current_user.instagram_uid %>
-                    <%= link_to 'instagram', '/auth/instagram', {class: "btn btn-default btn-lg disabled"}%>
-                    <% else %>
-                    <%= link_to 'instagram', '/auth/instagram', {class: "btn btn-default btn-lg"}%>
-                    <% end %>
-                    <% end %>
-                    <br><br><br><br>
+          <% if current_user.instagram_uid %>
+          <%= link_to 'instagram', '/auth/instagram', {class: "btn btn-default btn-lg disabled"}%>
+          <% else %>
+          <%= link_to 'instagram', '/auth/instagram', {class: "btn btn-default btn-lg"}%>
+          <% end %>
+          <% end %>
+          <br><br><br><br>
 
-                    <h1>Manage friends.</h1>
-                    <div class="row">
-                        <%= form_for Person.new  do |f| %>
-                        <div class="form-group col-xs-4">    
-                            <%= f.text_field :facebook_handle, placeholder: "facebook", class: 'form-control input-lg'%>
-                        </div>  
-                        <div class="form-group col-xs-4">
-                            <%= f.text_field :twitter_handle, placeholder: "twitter handle", class: 'form-control input-lg'%>
-                        </div>
-                        <div class="form-group col-xs-4">
-                            <%= f.text_field :instagram_handle, placeholder: "instagram", class: 'form-control input-lg'%>
-                        </div>
-                    <%= f.submit "ADD FRIENDS", {class: 'btn btn-default'}%>
-                    </div>
-                    <br><br>
-                    <% end %>
-                    <br>
-                </div>
+          <h1>Manage friends.</h1>
+          <div class="row">
+            <%= form_for Person.new  do |f| %>
+            <div class="form-group col-xs-4">    
+              <%= f.text_field :facebook_handle, placeholder: "facebook", class: 'form-control input-lg'%>
+            </div>  
+            <div class="form-group col-xs-4">
+              <%= f.text_field :twitter_handle, placeholder: "twitter handle", class: 'form-control input-lg'%>
             </div>
+            <div class="form-group col-xs-4">
+              <%= f.text_field :instagram_handle, placeholder: "instagram", class: 'form-control input-lg'%>
+            </div>
+            <%= f.submit "ADD FRIENDS", {class: 'btn btn-default'}%>
+          </div>
+          <br><br>
+          <h1><%= "Remove follows" if !@follows.empty? %></h1>
+          <div class "row">
+            <%@follows.each do |follow| %>
+            <p>
+              <%= link_to 'x', follow_path(follow), method: :delete %>
+              <%= Person.find(follow.followee_id).name || Person.find(follow.followee_id).facebook_handle || Person.find(follow.followee_id).twitter_handle || Person.find(follow.followee_id).instagram_handle%>
+            </p>
+            <%end %>
+          </div>
+          <% end %>
+          <br>
         </div>
+      </div>
     </div>
+  </div>
 </header>
 

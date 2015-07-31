@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @follows = @user.followees.all
+    @follows = @user.follows
   end
 
   def settings
