@@ -13,5 +13,6 @@ class PeopleController < ApplicationController
 
     Follow.create(:follower_id => current_user.id, :followee_id => @person.id)
     redirect_to user_path current_user
+    
   end
 end
