@@ -1,9 +1,9 @@
 
 .node{
-	padding: 20px;
+	padding: 15px;
 	border:1px solid white;
 	vertical-align: top;
-	margin-top: 30px;
+	margin: 10px;
 }
 
 
@@ -17,3 +17,12 @@
   border-color: #AAA;
   opacity: .6;
 } 
+
+
+.grid-item {
+	width: 425px; 
+}
+
+#move-up{
+	padding-top: -50px;
+}

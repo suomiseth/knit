@@ -28,17 +28,18 @@
                     <h1>Manage friends.</h1>
                     <div class="row">
                         <%= form_for Person.new  do |f| %>
-                        <div class="form-group col-xs-4">
-                            <%= f.text_field :instagram_handle, placeholder: "instagram", class: 'form-control input-lg'%>
-                        </div>
-                        <div class="form-group col-xs-4">
-                            <%= f.text_field :twitter_handle, placeholder: "twitter handle", class: 'form-control input-lg'%>
-                        </div>
                         <div class="form-group col-xs-4">    
                             <%= f.text_field :facebook_handle, placeholder: "facebook", class: 'form-control input-lg'%>
                         </div>  
-                    </div>
+                        <div class="form-group col-xs-4">
+                            <%= f.text_field :twitter_handle, placeholder: "twitter handle", class: 'form-control input-lg'%>
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <%= f.text_field :instagram_handle, placeholder: "instagram", class: 'form-control input-lg'%>
+                        </div>
                     <%= f.submit "ADD FRIENDS", {class: 'btn btn-default'}%>
+                    </div>
+                    <br><br>
                     <% end %>
                     <br>
                 </div>

@@ -2,31 +2,25 @@
   <div class="intro-body">
     <div class="container-fluid">
       <div class="row feed">
-        <!-- <div id="wrapper">
-          <div id="columns"> -->
-            <!-- <div class="pin"> -->
-        <!-- <div class="col-md-8 col-md-offset-2"> -->
+          <div class="grid">
 
               <% if @posts %>
-                <h2 class="text-center">Latest posts: </h2>
-                
-                  <% @posts.each do |post|%>
-                  <div class="col-lg-4">
-                    <a href="<%=post[:uri] %>"> <div class="node" >
-                      @<%= post[:handle] %> <br>
-                      <%= image_tag(post[:photo_uri], {class: "center-block img-responsive"}) %> <br>
-                      <p><%= post[:text] %> </p> <br>
-                    </div></a>
-                  </div>
-                  <% end %> 
-                  <br>    
-              <% end %>
-        
+               <!--  <h2 class="text-center">Latest posts: </h2>  -->
+                      <% @posts.each do |post|%>
+                        <div class="grid-item">
+                             <div class="node" >
+                              <%= image_tag(post[:photo_uri], {class: "center-block img-responsive"}) %> <br>
+                              <a href="<%=post[:uri] %>">@<%= post[:handle] %> </a> <br>
+                              <h4><%= post[:text] %></h4>
+                            </div>
+                        </div> <!-- grid item end -->
+                      <% end %> 
+                    <br>    
+                <% else %>
+                <h1>You're not following anyone. <a href="#"> Add friends!</a></h1>
+                <% end %> <!-- end if @posts -->
+          </div> <!-- grid end -->
 
-        <!-- </div> -->
-           <!--  </div> -->
-          <!-- </div>
-        </div> -->
       </div>
     </div>
   </div>

@@ -28,10 +28,11 @@ class UsersController < ApplicationController
       @posts += @facebook_posts
     end
     @posts = @posts.sort_by{|post| post[:post_time] }.reverse.slice(0,20)
-    
   end
 
   def edit
+    @user = User.find(params[:id])
+    @follows = @user.followees.all
   end
 
   def settings
